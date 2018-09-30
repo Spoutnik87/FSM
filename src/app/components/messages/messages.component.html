@@ -1,0 +1,1 @@
+<ngb-alert *ngFor="let message of (messages$ | async)" [type]="message.type" (close)="removeMessage(message.id)">{{message.message}}</ngb-alert>
