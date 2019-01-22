@@ -1,15 +1,15 @@
-import { Action } from "@ngrx/store";
-import { VolumeModel } from "../../models/volume.model";
+import { Action } from '@ngrx/store';
+import { VolumeModel } from '../../models/volume.model';
 
-export const LOAD_VOLUMES = "LOAD_VOLUMES";
-export const LOAD_VOLUMES_SUCCESS = "LOAD_VOLUMES_SUCCESS";
-export const LOAD_VOLUMES_FAIL = "LOAD_VOLUMES_FAIL";
-export const LOCK_VOLUME = "LOCK_VOLUME";
-export const LOCK_VOLUME_SUCCESS = "LOCK_VOLUME_SUCCESS";
-export const LOCK_VOLUME_FAIL = "LOCK_VOLUME_FAIL";
-export const UNLOCK_VOLUME = "UNLOCK_VOLUME";
-export const UNLOCK_VOLUME_SUCCESS = "UNLOCK_VOLUME_SUCCESS";
-export const UNLOCK_VOLUME_FAIL = "UNLOCK_VOLUME_FAIL";
+export const LOAD_VOLUMES = 'LOAD_VOLUMES';
+export const LOAD_VOLUMES_SUCCESS = 'LOAD_VOLUMES_SUCCESS';
+export const LOAD_VOLUMES_FAIL = 'LOAD_VOLUMES_FAIL';
+export const LOCK_VOLUME = 'LOCK_VOLUME';
+export const LOCK_VOLUME_SUCCESS = 'LOCK_VOLUME_SUCCESS';
+export const LOCK_VOLUME_FAIL = 'LOCK_VOLUME_FAIL';
+export const UNLOCK_VOLUME = 'UNLOCK_VOLUME';
+export const UNLOCK_VOLUME_SUCCESS = 'UNLOCK_VOLUME_SUCCESS';
+export const UNLOCK_VOLUME_FAIL = 'UNLOCK_VOLUME_FAIL';
 
 export class LoadVolumes implements Action {
   readonly type = LOAD_VOLUMES;
@@ -61,7 +61,7 @@ export class LockVolumeFail implements Action {
   constructor(volumeId: number, error: any) {
     this.payload = {
       volumeId,
-      error
+      error,
     };
   }
 }
@@ -78,7 +78,7 @@ export class UnlockVolume implements Action {
     this.payload = {
       volumeId,
       passphrase,
-      recoveryKey
+      recoveryKey,
     };
   }
 }
@@ -102,7 +102,7 @@ export class UnlockVolumeFail implements Action {
   constructor(volumeId: number, error: any) {
     this.payload = {
       volumeId,
-      error
+      error,
     };
   }
 }

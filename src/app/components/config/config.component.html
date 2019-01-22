@@ -5,12 +5,13 @@
   <form (ngSubmit)="onSubmit()" #configForm="ngForm">
     <div class="form-group">
       <label>Lien de l'API de Freenas</label>
-      <input class="form-control" name="url" [(ngModel)]="config.url" #url="ngModel" required>
+      <input class="form-control" name="url" [(ngModel)]="config.url" #url="ngModel" required placeholder="http://domain.name/api/v1.0" />
       <div *ngIf="url.dirty && url.hasError('required')">L'url est requise.</div>
     </div>
     <button *ngIf="!loading" class="btn btn-primary" type="submit" [disabled]="configForm.invalid">Valider</button>
     <div *ngIf="loading">Chargement...</div>
-  </form><br/> List des raccourcis
-  <app-shortcut-list [shortcuts]="config.shortcuts" (delete)="onShortcutDelete($event)"></app-shortcut-list><br/>
+  </form>
+  <br />
+  List des raccourcis <app-shortcut-list [shortcuts]="config.shortcuts" (delete)="onShortcutDelete($event)"></app-shortcut-list><br />
   <button class="btn btn-primary" (click)="onShortcutCreate()">Créer un raccourci</button>
 </ngb-panel>

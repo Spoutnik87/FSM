@@ -1,6 +1,7 @@
 <div class="shortcut-container">
-  Volume : {{shortcut.volumeId}} <br/> Type : {{shortcut.type === "lock" ? "Raccourci de verrouillage" : "Raccourci de deverouillage"}}
-  <br/> Raccourci : {{shortcut.shortcut}}
+  Volume : {{ shortcut.volumeId }} <br />
+  Type : {{ shortcut.type === 'lock' ? 'Raccourci de verrouillage' : 'Raccourci de deverouillage' }} <br />
+  Raccourci : {{ shortcut.shortcut }}
   <div class="shortcut-delete">
     <button class="btn btn-danger" (click)="onDelete()"><fa-icon [icon]="faTrash"></fa-icon></button>
   </div>

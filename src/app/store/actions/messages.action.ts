@@ -1,13 +1,13 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const SEND_SUCCESS_MESSAGE = "SEND_SUCCESS_MESSAGE";
-export const SEND_SUCCESS_MESSAGES = "SEND_SUCCESS_MESSAGES";
-export const SEND_ERROR_MESSAGE = "SEND_ERROR_MESSAGE";
-export const SEND_ERROR_MESSAGES = "SEND_ERROR_MESSAGES";
-export const SEND_INFO_MESSAGE = "SEND_INFO_MESSAGE";
-export const SEND_INFO_MESSAGES = "SEND_INFO_MESSAGES";
-export const REMOVE_MESSAGE = "REMOVE_MESSAGE";
-export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
+export const SEND_SUCCESS_MESSAGE = 'SEND_SUCCESS_MESSAGE';
+export const SEND_SUCCESS_MESSAGES = 'SEND_SUCCESS_MESSAGES';
+export const SEND_ERROR_MESSAGE = 'SEND_ERROR_MESSAGE';
+export const SEND_ERROR_MESSAGES = 'SEND_ERROR_MESSAGES';
+export const SEND_INFO_MESSAGE = 'SEND_INFO_MESSAGE';
+export const SEND_INFO_MESSAGES = 'SEND_INFO_MESSAGES';
+export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
+export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 
 export class SendSuccessMessage implements Action {
   readonly type = SEND_SUCCESS_MESSAGE;

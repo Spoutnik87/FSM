@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { ConfigService } from "./config.service";
+import { Injectable } from '@angular/core';
+import { ConfigService } from './config.service';
 
 @Injectable()
 export class AppService {
@@ -20,6 +20,6 @@ export class AppService {
   }
 
   getAuthorizationToken(): string {
-    return Buffer.from(`${this.username}:${this.password}`).toString("base64");
+    return Buffer.from(`${this.username}:${this.password}`).toString('base64');
   }
 }

@@ -1,25 +1,25 @@
-import { IFreenasState } from "./store/reducers/index";
-import { Store, select } from "@ngrx/store";
-import { ipcRenderer, ipcMain } from "electron";
-import { Component, OnInit, NgZone, ViewChild } from "@angular/core";
-import { LockVolume, getVolume, UnlockVolume } from "./store";
-import { take, filter } from "rxjs/operators";
+import { IFreenasState } from './store/reducers/index';
+import { Store, select } from '@ngrx/store';
+import { ipcRenderer, ipcMain } from 'electron';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
+import { LockVolume, getVolume, UnlockVolume } from './store';
+import { take, filter } from 'rxjs/operators';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = "FSM";
+  title = 'FSM';
 
-  @ViewChild("unlockVolumeModal")
+  @ViewChild('unlockVolumeModal')
   unlockVolumeModal;
 
   constructor(private zone: NgZone, private store: Store<IFreenasState>) {}
 
   ngOnInit() {
-    ipcRenderer.on("lock-volume", (event, args) => {
+    ipcRenderer.on('lock-volume', (event, args) => {
       this.store
         .pipe(
           select(getVolume(args.volumeId)),
@@ -28,13 +28,13 @@ export class AppComponent implements OnInit {
         )
         .subscribe(volume => {
           if (!volume.locking && volume.is_decrypted) {
-            ipcRenderer.send("focus");
+            ipcRenderer.send('focus');
             this.store.dispatch(new LockVolume(args.volumeId));
           }
         });
     });
 
-    ipcRenderer.on("unlock-volume", (event, args) => {
+    ipcRenderer.on('unlock-volume', (event, args) => {
       this.store
         .pipe(
           select(getVolume(args.volumeId)),
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
         )
         .subscribe(volume => {
           if (!volume.unlocking && !volume.is_decrypted) {
-            ipcRenderer.send("focus");
+            ipcRenderer.send('focus');
             this.zone.run(() => {
               this.unlockVolumeModal.volume = volume;
               this.unlockVolumeModal.show();
@@ -54,8 +54,6 @@ export class AppComponent implements OnInit {
   }
 
   onUnlockVolume(event) {
-    this.store.dispatch(
-      new UnlockVolume(event.volumeId, event.passphrase, event.recoveryKey)
-    );
+    this.store.dispatch(new UnlockVolume(event.volumeId, event.passphrase, event.recoveryKey));
   }
 }

@@ -1,23 +1,26 @@
 <ngb-panel title="Créer un raccourci" class="create-shortcut-container">
   <div *ngIf="shortcut.volumeId === -1">
     Choisissez un volume
-    <app-volumes [volumes]="encryptedVolumes$ | async" [clickable]="true" [full]="false" (clickVolume)="onSelectVolume($event)"></app-volumes>
+    <app-volumes
+      [volumes]="encryptedVolumes$ | async"
+      [clickable]="true"
+      [full]="false"
+      (clickVolume)="onSelectVolume($event)"
+    ></app-volumes>
   </div>
   <form *ngIf="shortcut.volumeId !== -1" (ngSubmit)="onSubmit()">
     <div class="form-check">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="type" value="lock" [(ngModel)]="shortcut.type">Raccourci de verrouillage
+        <input type="radio" class="form-check-input" name="type" value="lock" [(ngModel)]="shortcut.type" />Raccourci de verrouillage
       </label>
     </div>
     <div class="form-check">
       <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="type" value="unlock" [(ngModel)]="shortcut.type">Raccourci de
-        déverouillage
+        <input type="radio" class="form-check-input" name="type" value="unlock" [(ngModel)]="shortcut.type" />Raccourci de déverouillage
       </label>
     </div>
     <div class="form-group">
-      <label>Raccourci</label>
-      <input class="form-control" name="shortcut" [(ngModel)]="shortcut.shortcut" disabled>
+      <label>Raccourci</label> <input class="form-control" name="shortcut" [(ngModel)]="shortcut.shortcut" disabled />
     </div>
     <button class="btn btn-primary create-shortcut-button" type="submit">Valider</button>
     <button class="btn btn-secondary create-shortcut-button" (click)="onCancel()">Annuler</button>

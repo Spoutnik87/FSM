@@ -1,14 +1,21 @@
 <app-unlock-volume-modal [volume]="volume" #unlockVolumeModal (submit)="onUnlock($event)"></app-unlock-volume-modal>
 
 <div class="volume-container" [class.volume-clickable]="clickable" [class.volume-full]="full">
-  <div class="volume-title">{{volume.name}}</div>
+  <div class="volume-title">{{ volume.name }}</div>
   <div *ngIf="full" class="volume-progressbar">
-    <ngb-progressbar showValue="true" type="info" [value]="(volume.used/(volume.used+volume.avail))*100 | number: '1.0-1'"></ngb-progressbar>
+    <ngb-progressbar
+      showValue="true"
+      type="info"
+      [value]="(volume.used / (volume.used + volume.avail)) * 100 | number: '1.0-1'"
+    ></ngb-progressbar>
   </div>
   <div class="volume-locking" *ngIf="full && volume.vol_encrypt !== 0">
-    <button class="btn btn-danger" *ngIf="volume.is_decrypted && !volume.locking" (click)="onLock()"><fa-icon [icon]="faLock"></fa-icon></button>
-    <button class="btn btn-success" *ngIf="!volume.is_decrypted && !volume.unlocking" (click)="unlockVolumeModal.show()"><fa-icon
-        [icon]="faUnlock"></fa-icon></button>
+    <button class="btn btn-danger" *ngIf="volume.is_decrypted && !volume.locking" (click)="onLock()">
+      <fa-icon [icon]="faLock"></fa-icon>
+    </button>
+    <button class="btn btn-success" *ngIf="!volume.is_decrypted && !volume.unlocking" (click)="unlockVolumeModal.show()">
+      <fa-icon [icon]="faUnlock"></fa-icon>
+    </button>
     <app-loading *ngIf="volume.locking || volume.unlocking"></app-loading>
   </div>
 </div>

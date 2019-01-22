@@ -1,4 +1,11 @@
 <ngb-panel title="Volumes">
-  <app-volume *ngFor="let volume of volumes" [volume]="volume" (lock)="onLockVolume($event)" (unlock)="onUnlockVolume($event)"
-    (click)="onClickVolume(volume)" [clickable]="clickable" [full]="full"></app-volume>
+  <app-volume
+    *ngFor="let volume of volumes"
+    [volume]="volume"
+    (lock)="onLockVolume($event)"
+    (unlock)="onUnlockVolume($event)"
+    (click)="onClickVolume(volume)"
+    [clickable]="clickable"
+    [full]="full"
+  ></app-volume>
 </ngb-panel>

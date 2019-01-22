@@ -1,11 +1,11 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { VolumeModel } from "../../models/volume.model";
-import { faUnlock, faLock } from "@fortawesome/free-solid-svg-icons";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { VolumeModel } from '../../models/volume.model';
+import { faUnlock, faLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: "app-volume",
-  templateUrl: "./volume.component.html",
-  styleUrls: ["./volume.component.css"]
+  selector: 'app-volume',
+  templateUrl: './volume.component.html',
+  styleUrls: ['./volume.component.css'],
 })
 export class VolumeComponent {
   @Input()
@@ -34,7 +34,7 @@ export class VolumeComponent {
 
   onLock() {
     this.lock.emit({
-      volumeId: this.volume.id
+      volumeId: this.volume.id,
     });
   }
 

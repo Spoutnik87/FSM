@@ -1,4 +1,4 @@
-import { ShortcutModel } from "./shortcut.model";
+import { ShortcutModel } from './shortcut.model';
 
 export interface ConfigModel {
   setup: boolean;

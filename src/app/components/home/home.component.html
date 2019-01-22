@@ -4,6 +4,4 @@
   <app-volumes [volumes]="volumes$ | async" (lockVolume)="onLockVolume($event)" (unlockVolume)="onUnlockVolume($event)"></app-volumes>
 </div>
 
-<ng-template #loading>
-  <app-loading size="4x" center="true"></app-loading>
-</ng-template>
+<ng-template #loading> <app-loading size="4x" center="true"></app-loading> </ng-template>

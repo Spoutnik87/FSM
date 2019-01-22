@@ -1,12 +1,8 @@
-import {
-  ActionReducerMap,
-  createSelector,
-  createFeatureSelector
-} from "@ngrx/store";
-import * as fromMessages from "./messages.reducer";
-import * as fromAlerts from "./alerts.reducer";
-import * as fromVersion from "./version.reducer";
-import * as fromVolumes from "./volumes.reducer";
+import { ActionReducerMap, createSelector, createFeatureSelector } from '@ngrx/store';
+import * as fromMessages from './messages.reducer';
+import * as fromAlerts from './alerts.reducer';
+import * as fromVersion from './version.reducer';
+import * as fromVolumes from './volumes.reducer';
 
 export interface IFreenasState {
   messagesReducer: fromMessages.IMessagesReducerState;
@@ -19,10 +15,10 @@ export const reducers: ActionReducerMap<IFreenasState> = {
   messagesReducer: fromMessages.messagesReducer,
   versionReducer: fromVersion.versionReducer,
   alertsReducer: fromAlerts.alertsReducer,
-  volumesReducer: fromVolumes.volumeReducer
+  volumesReducer: fromVolumes.volumeReducer,
 };
 
-export const getFreenasState = createFeatureSelector<IFreenasState>("freenas");
+export const getFreenasState = createFeatureSelector<IFreenasState>('freenas');
 
 export const getMessagesState = createSelector(
   getFreenasState,
@@ -77,7 +73,10 @@ export const getVersionLoaded = createSelector(
   fromVersion.getVersionLoaded
 );
 
-export const getAlerts = createSelector(getAlertsState, fromAlerts.getAlerts);
+export const getAlerts = createSelector(
+  getAlertsState,
+  fromAlerts.getAlerts
+);
 export const getAlertsLoading = createSelector(
   getAlertsState,
   fromAlerts.getAlertsLoading
@@ -108,4 +107,7 @@ export const getVolumesLoaded = createSelector(
 );
 
 export const getVolume = (volumeId: number) =>
-  createSelector(getVolumes, fromVolumes.getVolume(volumeId));
+  createSelector(
+    getVolumes,
+    fromVolumes.getVolume(volumeId)
+  );

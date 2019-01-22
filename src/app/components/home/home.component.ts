@@ -1,5 +1,5 @@
-import * as fromStore from "../../store";
-import { Store } from "@ngrx/store";
+import * as fromStore from '../../store';
+import { Store } from '@ngrx/store';
 import {
   IFreenasState,
   getVolumes,
@@ -10,16 +10,16 @@ import {
   getVersionLoading,
   getVolumesLoading,
   getVersionLoaded,
-  getVolumesLoaded
-} from "./../../store";
-import { VolumeModel } from "./../../models/volume.model";
-import { VersionModel } from "./../../models/version.model";
-import { Observable } from "rxjs";
-import { Component, OnInit } from "@angular/core";
+  getVolumesLoaded,
+} from './../../store';
+import { VolumeModel } from './../../models/volume.model';
+import { VersionModel } from './../../models/version.model';
+import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html"
+  selector: 'app-home',
+  templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
   version$: Observable<VersionModel>;
@@ -47,8 +47,6 @@ export class HomeComponent implements OnInit {
   }
 
   onUnlockVolume(event) {
-    this.store.dispatch(
-      new UnlockVolume(event.volumeId, event.passphrase, event.recoveryKey)
-    );
+    this.store.dispatch(new UnlockVolume(event.volumeId, event.passphrase, event.recoveryKey));
   }
 }

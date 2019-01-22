@@ -1,4 +1,4 @@
-import { VolumeModel } from "../../models/volume.model";
+import { VolumeModel } from '../../models/volume.model';
 import {
   VolumesAction,
   LOAD_VOLUMES,
@@ -9,8 +9,8 @@ import {
   LOCK_VOLUME_FAIL,
   UNLOCK_VOLUME,
   UNLOCK_VOLUME_SUCCESS,
-  UNLOCK_VOLUME_FAIL
-} from "../actions/volumes.action";
+  UNLOCK_VOLUME_FAIL,
+} from '../actions/volumes.action';
 
 export interface IVolumesReducerState {
   volumes: VolumeModel[];
@@ -21,34 +21,31 @@ export interface IVolumesReducerState {
 const initialState: IVolumesReducerState = {
   volumes: [],
   loading: false,
-  loaded: false
+  loaded: false,
 };
 
-export function volumeReducer(
-  state = initialState,
-  action: VolumesAction
-): IVolumesReducerState {
+export function volumeReducer(state = initialState, action: VolumesAction): IVolumesReducerState {
   switch (action.type) {
     case LOAD_VOLUMES:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case LOAD_VOLUMES_SUCCESS:
       return {
         volumes: action.payload.map(volume => ({
           ...volume,
           locking: false,
-          unlocking: false
+          unlocking: false,
         })),
         loading: false,
-        loaded: true
+        loaded: true,
       };
     case LOAD_VOLUMES_FAIL:
       return {
         ...state,
         loading: false,
-        loaded: false
+        loaded: false,
       };
     case LOCK_VOLUME:
       return {
@@ -59,9 +56,9 @@ export function volumeReducer(
           }
           return {
             ...volume,
-            locking: true
+            locking: true,
           };
-        })
+        }),
       };
     case LOCK_VOLUME_SUCCESS:
       return {
@@ -73,9 +70,9 @@ export function volumeReducer(
           return {
             ...volume,
             locking: false,
-            is_decrypted: false
+            is_decrypted: false,
           };
-        })
+        }),
       };
     case LOCK_VOLUME_FAIL:
       return {
@@ -86,9 +83,9 @@ export function volumeReducer(
           }
           return {
             ...volume,
-            locking: false
+            locking: false,
           };
-        })
+        }),
       };
     case UNLOCK_VOLUME:
       return {
@@ -99,9 +96,9 @@ export function volumeReducer(
           }
           return {
             ...volume,
-            unlocking: true
+            unlocking: true,
           };
-        })
+        }),
       };
     case UNLOCK_VOLUME_SUCCESS:
       return {
@@ -113,9 +110,9 @@ export function volumeReducer(
           return {
             ...volume,
             unlocking: false,
-            is_decrypted: true
+            is_decrypted: true,
           };
-        })
+        }),
       };
     case UNLOCK_VOLUME_FAIL:
       return {
@@ -126,9 +123,9 @@ export function volumeReducer(
           }
           return {
             ...volume,
-            unlocking: false
+            unlocking: false,
           };
-        })
+        }),
       };
     default:
       return state;
@@ -138,8 +135,7 @@ export function volumeReducer(
 export const getVolumesLoading = (state: IVolumesReducerState) => state.loading;
 export const getVolumesLoaded = (state: IVolumesReducerState) => state.loaded;
 export const getVolumes = (state: IVolumesReducerState) => state.volumes;
-export const getEncryptedVolumes = (state: VolumeModel[]) =>
-  state.filter(volume => volume.vol_encrypt !== 0);
+export const getEncryptedVolumes = (state: VolumeModel[]) => state.filter(volume => volume.vol_encrypt !== 0);
 export const getVolume = (volumeId: number) => (state: VolumeModel[]) => {
   for (const volume of state) {
     if (volume.id === volumeId) {

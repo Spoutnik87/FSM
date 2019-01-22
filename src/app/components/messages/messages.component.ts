@@ -1,17 +1,12 @@
-import { Observable } from "rxjs";
-import { MessageModel } from "./../../models/message.model";
-import { Component, Input, OnInit, OnDestroy } from "@angular/core";
-import { Store } from "@ngrx/store";
-import {
-  IFreenasState,
-  ClearMessages,
-  RemoveMessage,
-  getMessages
-} from "../../store";
+import { Observable } from 'rxjs';
+import { MessageModel } from './../../models/message.model';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IFreenasState, ClearMessages, RemoveMessage, getMessages } from '../../store';
 
 @Component({
-  selector: "app-messages",
-  templateUrl: "./messages.component.html"
+  selector: 'app-messages',
+  templateUrl: './messages.component.html',
 })
 export class MessagesComponent implements OnInit, OnDestroy {
   messages$: Observable<MessageModel[]>;

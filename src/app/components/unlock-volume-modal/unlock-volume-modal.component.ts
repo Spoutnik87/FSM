@@ -1,16 +1,10 @@
-import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
-import { VolumeModel } from "./../../models/volume.model";
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ViewChild
-} from "@angular/core";
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { VolumeModel } from './../../models/volume.model';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
-  selector: "app-unlock-volume-modal",
-  templateUrl: "./unlock-volume-modal.component.html"
+  selector: 'app-unlock-volume-modal',
+  templateUrl: './unlock-volume-modal.component.html',
 })
 export class UnlockVolumeModalComponent {
   @Input()
@@ -19,11 +13,11 @@ export class UnlockVolumeModalComponent {
   @Output()
   submit = new EventEmitter();
 
-  @ViewChild("modalContent")
+  @ViewChild('modalContent')
   modalContent;
 
-  passphrase = "";
-  recoveryKey = "";
+  passphrase = '';
+  recoveryKey = '';
 
   modalRef: NgbModalRef;
 
@@ -31,8 +25,8 @@ export class UnlockVolumeModalComponent {
 
   show() {
     if (this.modalRef == null) {
-      this.passphrase = "";
-      this.recoveryKey = "";
+      this.passphrase = '';
+      this.recoveryKey = '';
       this.modalRef = this.modalService.open(this.modalContent);
       this.modalRef.result.then(
         () => {
@@ -55,7 +49,7 @@ export class UnlockVolumeModalComponent {
     this.submit.emit({
       volumeId: this.volume.id,
       passphrase: this.passphrase,
-      recoveryKey: this.recoveryKey
+      recoveryKey: this.recoveryKey,
     });
   }
 }

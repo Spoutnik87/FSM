@@ -1,14 +1,14 @@
-import { ConfigModel } from "./../../models/config.model";
-import { ShortcutModel } from "./../../models/shortcut.model";
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { ConfigService } from "../../services/config.service";
-import { ipcRenderer } from "electron";
+import { ConfigModel } from './../../models/config.model';
+import { ShortcutModel } from './../../models/shortcut.model';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConfigService } from '../../services/config.service';
+import { ipcRenderer } from 'electron';
 
 @Component({
-  selector: "app-config",
-  templateUrl: "./config.component.html",
-  styleUrls: ["./config.component.css"]
+  selector: 'app-config',
+  templateUrl: './config.component.html',
+  styleUrls: ['./config.component.css'],
 })
 export class ConfigComponent {
   config: ConfigModel;
@@ -28,15 +28,15 @@ export class ConfigComponent {
     this.configService.setSetup(true);
     this.alertSave = false;
     this.loading = false;
-    this.router.navigateByUrl("/signin");
+    this.router.navigateByUrl('/signin');
   }
 
   onShortcutCreate() {
-    this.router.navigateByUrl("/create-shortcut");
+    this.router.navigateByUrl('/create-shortcut');
   }
 
   onShortcutDelete(event: ShortcutModel) {
-    ipcRenderer.send("remove-shortcut", event);
+    ipcRenderer.send('remove-shortcut', event);
     this.configService.removeShortcut(event.shortcut);
   }
 }

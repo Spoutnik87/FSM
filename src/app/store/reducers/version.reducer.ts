@@ -1,10 +1,5 @@
-import { VersionModel } from "../../models/version.model";
-import {
-  VersionAction,
-  LOAD_VERSION,
-  LOAD_VERSION_SUCCESS,
-  LOAD_VERSION_FAIL
-} from "../actions/version.action";
+import { VersionModel } from '../../models/version.model';
+import { VersionAction, LOAD_VERSION, LOAD_VERSION_SUCCESS, LOAD_VERSION_FAIL } from '../actions/version.action';
 
 export interface IVersionReducerState {
   version: VersionModel;
@@ -14,35 +9,32 @@ export interface IVersionReducerState {
 
 const initialState: IVersionReducerState = {
   version: {
-    fullversion: "",
-    name: "",
-    version: ""
+    fullversion: '',
+    name: '',
+    version: '',
   },
   loading: false,
-  loaded: false
+  loaded: false,
 };
 
-export function versionReducer(
-  state = initialState,
-  action: VersionAction
-): IVersionReducerState {
+export function versionReducer(state = initialState, action: VersionAction): IVersionReducerState {
   switch (action.type) {
     case LOAD_VERSION:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case LOAD_VERSION_SUCCESS:
       return {
         version: action.payload,
         loading: false,
-        loaded: true
+        loaded: true,
       };
     case LOAD_VERSION_FAIL:
       return {
         ...state,
         loading: false,
-        loaded: false
+        loaded: false,
       };
     default:
       return state;
