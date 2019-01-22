@@ -1,0 +1,17 @@
+<ngb-panel title="Configuration">
+  <ngb-alert *ngIf="alertSave">Sauvegarde de la configuration</ngb-alert>
+  <ngb-alert *ngIf="alertCheckConfig">Verification de la configuration</ngb-alert>
+  <ngb-alert *ngIf="alertInvalid" type="AlertType.DANGER">Verification de la configuration</ngb-alert>
+  <form (ngSubmit)="onSubmit()" #configForm="ngForm">
+    <div class="form-group">
+      <label>Lien de l'API de Freenas</label>
+      <input class="form-control" name="url" [(ngModel)]="config.url" #url="ngModel" required placeholder="http://domain.name/api/v1.0" />
+      <div *ngIf="url.dirty && url.hasError('required')">L'url est requise.</div>
+    </div>
+    <button *ngIf="!loading" class="btn btn-primary" type="submit" [disabled]="configForm.invalid">Valider</button>
+    <div *ngIf="loading">Chargement...</div>
+  </form>
+  <br />
+  List des raccourcis <app-shortcut-list [shortcuts]="config.shortcuts" (delete)="onShortcutDelete($event)"></app-shortcut-list><br />
+  <button class="btn btn-primary" (click)="onShortcutCreate()">Créer un raccourci</button>
+</ngb-panel>

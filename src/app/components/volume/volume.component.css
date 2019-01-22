@@ -1,0 +1,33 @@
+.volume-container {
+  padding: 0.25rem;
+  border: 0.1rem solid #545454;
+  margin-bottom: 0.25rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+.volume-full {
+  height: 6rem;
+  position: relative;
+}
+
+.volume-title {
+  padding-left: 0.25rem;
+  font-weight: bold;
+}
+
+.volume-progressbar {
+  margin-top: 1.5rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.volume-locking {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+}
+
+.volume-clickable {
+  cursor: pointer;
+}

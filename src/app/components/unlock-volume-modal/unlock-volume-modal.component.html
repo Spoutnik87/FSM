@@ -1,0 +1,17 @@
+<ng-template #modalContent let-close="close()">
+  <div class="modal-header">Deverouiller le volume</div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>Phrase de passe</label> <input class="form-control" type="password" name="passphrase" [(ngModel)]="passphrase" />
+      </div>
+      <div class="form-group">
+        <label>Clé de récupération</label> <input class="form-control" type="password" name="recoveryKey" [(ngModel)]="recoveryKey" />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="(close)">Annuler</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit(); (close)">Deverouiller</button>
+  </div>
+</ng-template>

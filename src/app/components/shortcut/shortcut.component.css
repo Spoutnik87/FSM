@@ -1,0 +1,14 @@
+.shortcut-container {
+  padding: 0.25rem;
+  border: 0.1rem solid #545454;
+  margin-bottom: 0.25rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.shortcut-delete {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+}
